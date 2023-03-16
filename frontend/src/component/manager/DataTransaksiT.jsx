@@ -45,90 +45,93 @@ export default function DataTransaksi() {
 
   console.log(filteredTransaksi);
   return (
-    <div>
+    <div className="my-16 mx-16">
+      <div class="flex items-center justify-center">
+        <h1 class="text-center text-4xl font-bold">Transaksi per Hari</h1>
+      </div>
       <br />
-      <div className="my-11 mx-11">
-        <div className="overflow-hidden rounded-lg border border-gray-200 shadow-md m-5">
-          <div className="my-4 mx-4">
-            <div className="flex p-4 bg-gray-100 rounded-md border shadow-sm">
-              <span className="flex-none">Tgl. Transaksi : </span>
-              <DatePicker
-                className="pl-1 bg-gray-100"
-                selected={selectedDate}
-                onChange={(date) => {
-                  setSelectedDate(date);
-                  filterByDate(date);
-                }}
-              />
-            </div>
+      <div className="overflow-hidden rounded-lg border border-gray-200 shadow-md m-5">
+        <div className="my-4 mx-4">
+          <div className="flex p-4 bg-gray-100 rounded-md border shadow-sm">
+            <span className="flex-none">Tgl. Transaksi : </span>
+            <DatePicker
+              className="pl-1 bg-gray-100"
+              selected={selectedDate}
+              onChange={(date) => {
+                setSelectedDate(date);
+                filterByDate(date);
+              }}
+            />
           </div>
-          <table className="w-full border-collapse bg-white text-left text-sm text-gray-500">
-            <thead className="text-xs text-white uppercase bg-gray-800">
-              <tr>
-                <th scope="col" className="px-6 py-4 font-medium text-white">
-                  Nama Kasir
-                </th>
-                <th scope="col" className="px-6 py-4 font-medium text-white">
-                  Tanggal Transaksi
-                </th>
-                <th scope="col" className="px-6 py-4 font-medium text-white">
-                  Nama Pelanggan
-                </th>
-                <th scope="col" className="px-6 py-4 font-medium text-white">
-                  Total Harga
-                </th>
-                <th scope="col" className="px-6 py-4 font-medium text-white">
-                  Status
-                </th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-gray-100 border-t border-gray-100">
-              {selectedDate === null || selectedDate === undefined ? (
-                <>
-                  {transaksi.map((transaksi) => (
-                    <tr
-                      key={transaksi.id_transaksi}
-                      className="hover:bg-gray-50"
-                    >
-                      <td className="px-6 py-4">{transaksi.user.nama_user}</td>
-                      <td className="px-6 py-4">{dateFormat(transaksi.tgl_transaksi)}</td>
-                      <td className="px-6 py-4">{transaksi.nama_pelanggan}</td>
-                      <td className="px-6 py-4">Rp{transaksi.total.toLocaleString('id-ID')}</td>
-                      <td className="px-6 py-4">
-                        <div className="flex gap-2">
-                          <span className="inline-flex items-center gap-1 rounded-full bg-blue-50 px-2 py-1 text-xs font-semibold text-blue-600">
-                            Lunas
-                          </span>
-                        </div>
-                      </td>
-                    </tr>
-                  ))}
-                </>
-              ) : (
-                <>
-                  {filteredTransaksi.map((transaksi) => (
-                    <tr
-                      key={transaksi.id_transaksi}
-                      className="hover:bg-gray-50"
-                    >
-                      <td className="px-6 py-4">{transaksi.user.nama_user}</td>
-                      <td className="px-6 py-4">{dateFormat(transaksi.tgl_transaksi)}</td>
-                      <td className="px-6 py-4">{transaksi.nama_pelanggan}</td>
-                      <td className="px-6 py-4">Rp{transaksi.total.toLocaleString('id-ID')}</td>
-                      <td className="px-6 py-4">
-                        <div className="flex gap-2">
-                          <span className="inline-flex items-center gap-1 rounded-full bg-blue-50 px-2 py-1 text-xs font-semibold text-blue-600">
-                            Lunas
-                          </span>
-                        </div>
-                      </td>
-                    </tr>
-                  ))}
-                </>
-              )}
-            </tbody>
-          </table>
         </div>
+        <table className="w-full border-collapse bg-white text-left text-sm text-gray-500">
+          <thead className="text-xs text-white uppercase bg-gray-800">
+            <tr>
+              <th scope="col" className="px-6 py-4 font-medium text-white">
+                Nama Kasir
+              </th>
+              <th scope="col" className="px-6 py-4 font-medium text-white">
+                Tanggal Transaksi
+              </th>
+              <th scope="col" className="px-6 py-4 font-medium text-white">
+                Nama Pelanggan
+              </th>
+              <th scope="col" className="px-6 py-4 font-medium text-white">
+                Total Harga
+              </th>
+              <th scope="col" className="px-6 py-4 font-medium text-white">
+                Status
+              </th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-gray-100 border-t border-gray-100">
+            {selectedDate === null || selectedDate === undefined ? (
+              <>
+                {transaksi.map((transaksi) => (
+                  <tr key={transaksi.id_transaksi} className="hover:bg-gray-50">
+                    <td className="px-6 py-4">{transaksi.user.nama_user}</td>
+                    <td className="px-6 py-4">
+                      {dateFormat(transaksi.tgl_transaksi)}
+                    </td>
+                    <td className="px-6 py-4">{transaksi.nama_pelanggan}</td>
+                    <td className="px-6 py-4">
+                      Rp{transaksi.total.toLocaleString("id-ID")}
+                    </td>
+                    <td className="px-6 py-4">
+                      <div className="flex gap-2">
+                        <span className="inline-flex items-center gap-1 rounded-full bg-blue-50 px-2 py-1 text-xs font-semibold text-blue-600">
+                          Lunas
+                        </span>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </>
+            ) : (
+              <>
+                {filteredTransaksi.map((transaksi) => (
+                  <tr key={transaksi.id_transaksi} className="hover:bg-gray-50">
+                    <td className="px-6 py-4">{transaksi.user.nama_user}</td>
+                    <td className="px-6 py-4">
+                      {dateFormat(transaksi.tgl_transaksi)}
+                    </td>
+                    <td className="px-6 py-4">{transaksi.nama_pelanggan}</td>
+                    <td className="px-6 py-4">
+                      Rp{transaksi.total.toLocaleString("id-ID")}
+                    </td>
+                    <td className="px-6 py-4">
+                      <div className="flex gap-2">
+                        <span className="inline-flex items-center gap-1 rounded-full bg-blue-50 px-2 py-1 text-xs font-semibold text-blue-600">
+                          Lunas
+                        </span>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </>
+            )}
+          </tbody>
+        </table>
       </div>
     </div>
   );

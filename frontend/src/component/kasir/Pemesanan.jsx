@@ -20,7 +20,7 @@ export default function Pemesanan() {
     const [showModal, setShowModal] = useState(false)
     const [pesanan, setPesanan] = useState([])
     const totalPrice = pesanan.reduce((total, item) => {
-        return total + (item.harga.toLocaleString('id-ID') * item.qty);
+        return total + (item.harga * item.qty);
     }, 0)
 
     const [meja, setMeja] = useState([]);
@@ -30,6 +30,10 @@ export default function Pemesanan() {
     const [namaPelanggan, setNamaPelanggan] = useState("")
 
     const [detail_transaksi, setDetailTransaksi] = useState([])
+    const formatter = new Intl.NumberFormat("id-ID", {
+        style: "currency",
+        currency: "IDR",
+      });
 
     useEffect(() => {
         const fecthDatas = async () => {
@@ -224,9 +228,9 @@ export default function Pemesanan() {
 
             {showModal ? (
                 <div>
-                    <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
-                        <div className="relative w-auto my-6 mx-auto max-w-3xl max-h-screen">
-                            <div className="flex h-full flex-col overflow-y-auto bg-white shadow-xl">
+                    <div className="justify-center items-center flex overflow-x-hidden max-w-full overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+                        <div className="relative w-1/2 my-6 max-h-screen">
+                            <div className="flex h-full w-full mx-auto  flex-col overflow-y-auto bg-white shadow-xl">
                                 <div className="flex-1 overflow-y-auto py-6 px-4 sm:px-6">
                                     <div className="flex items-start justify-between">
                                         <p className="text-lg font-medium text-gray-900">Pesanan Meja Nomor {selectedMeja}</p>
@@ -255,7 +259,7 @@ export default function Pemesanan() {
                                                                     <h3>
                                                                         <p>{product.nama_menu}</p>
                                                                     </h3>
-                                                                    <p className="ml-4">Rp{product.harga.toLocaleString('id-ID') * product.qty}</p>
+                                                                    <p className="ml-4">Rp{(product.harga * product.qty).toLocaleString('id-ID')}</p>
                                                                 </div>
                                                                 <p className="mt-1 text-sm text-gray-500">{product.jenis}</p>
                                                             </div>
@@ -279,7 +283,7 @@ export default function Pemesanan() {
                                 <div className="border-t border-gray-200 py-3 px-4 sm:px-6">
                                     <div className="flex justify-between text-base font-medium text-gray-900">
                                         <p>Total</p>
-                                        <p>{totalPrice}</p>
+                                        <p>Rp{totalPrice.toLocaleString('id-ID')}</p>
                                     </div>
                                 </div>
                                 <form onSubmit={handleSubmit} className="border-t border-gray-200 py-6 px-4 sm:px-6">
