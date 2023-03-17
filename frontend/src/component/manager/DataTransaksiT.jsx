@@ -47,7 +47,7 @@ export default function DataTransaksi() {
   return (
     <div className="my-16 mx-16">
       <div class="flex items-center justify-center">
-        <h1 class="text-center text-4xl font-bold">Transaksi per Hari</h1>
+        <h1 class="text-center text-4xl font-bold" style={{ fontFamily: "Outfit" }}>Transaksi per Hari</h1>
       </div>
       <br />
       <div className="overflow-hidden rounded-lg border border-gray-200 shadow-md m-5">
@@ -64,7 +64,7 @@ export default function DataTransaksi() {
             />
           </div>
         </div>
-        <table className="w-full border-collapse bg-white text-left text-sm text-gray-500">
+        <table className="w-full border-collapse bg-white text-left text-sm text-gray-500" >
           <thead className="text-xs text-white uppercase bg-gray-800">
             <tr>
               <th scope="col" className="px-6 py-4 font-medium text-white">

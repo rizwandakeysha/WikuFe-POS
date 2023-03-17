@@ -47,11 +47,24 @@ export default function Menu() {
   return (
     <div>
       <div className="my-16 mx-16">
-      <div class="flex items-center justify-center">
-          <h1 class="text-center text-4xl font-bold">Tabel Menu</h1>
+        <div class="flex items-center my-6 justify-center">
+          <h1
+            class="text-center text-4xl font-bold"
+            style={{ fontFamily: "Outfit" }}
+          >
+            Tabel Menu
+          </h1>
         </div>
-<br />
-<br />
+        <div className="flex items-center my-2 justify-center">
+          <a href="add_menu">
+            <button
+              type="button"
+              className="mb-1 text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-md w-full sm:w-auto px-5 py-2.5 text-center bg-green-600 hover:bg-green-700 focus:ring-green-800"
+            >
+              Tambahkan Menu
+            </button>
+          </a>
+        </div>
         <div className="flex flex-wrap gap-5 ">
           <div className="w-full relative overflow-x-auto shadow-md sm:rounded-lg">
             <table className="table-fixed w-full text-sm text-left text-gray-500">
@@ -72,7 +85,7 @@ export default function Menu() {
                   <th scope="col" className="px-6 py-3 text-center">
                     Deskripsi
                   </th>
-                  <th scope="col" className="pl-6 py-3 text-right">
+                  <th scope="col" className="pl-6 py-3">
                     <span className="sr-only">Edit / Delete</span>
                   </th>
                 </tr>
@@ -97,7 +110,9 @@ export default function Menu() {
                         {menu.nama_menu}
                       </td>
                       <td className="px-6 py-4 text-center">{menu.jenis}</td>
-                      <td className="px-6 py-4 text-center">Rp{menu.harga.toLocaleString('id-ID')}</td>
+                      <td className="px-6 py-4 text-center">
+                        Rp{menu.harga.toLocaleString("id-ID")}
+                      </td>
                       <td className="px-6 py-4 text-left w-49">
                         {menu.deskripsi}
                       </td>
@@ -123,18 +138,7 @@ export default function Menu() {
           </div>
         </div>
         <br />
-        <div>
-            <div className="flex items-center justify-center">
-              <a href="add_menu">
-                <button
-                  type="button"
-                  className="mb-1 text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-md w-full sm:w-auto px-5 py-2.5 text-center bg-green-600 hover:bg-green-700 focus:ring-green-800"
-                >
-                  Tambahkan Menu
-                </button>
-              </a>
-            </div>
-          </div>
+        <div></div>
       </div>
       {/* modal delete */}
       {showModal ? (

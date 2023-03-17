@@ -51,6 +51,7 @@ function App() {
             <Route path="/add_menu" element={<AddMenu />} />{" "}
             <Route path="edit_menu/:id_menu" element={<EditMenu />} />
             <Route path="/meja" element={<Meja />} />{" "}
+            
           </Route>{" "}
           <Route path="*" element={<NotFound />} />{" "}
         </Routes>{" "}

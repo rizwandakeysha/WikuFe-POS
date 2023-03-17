@@ -44,7 +44,7 @@ export default function DataTransaksi() {
   return (
     <div className="my-16 mx-16">
       <div class="flex items-center justify-center">
-        <h1 class="text-center text-4xl font-bold">Transaksi Kasir</h1>
+        <h1 class="text-center text-4xl font-bold" style={{ fontFamily: "Outfit" }}>Transaksi Kasir</h1>
       </div>
       <br />
         <div className="overflow-hidden rounded-lg border border-gray-200 shadow-md m-5">

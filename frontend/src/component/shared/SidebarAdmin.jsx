@@ -1,57 +1,151 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { Icon } from '@iconify/react';
+import { Icon } from "@iconify/react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 export default function Sidebar() {
   const navigate = useNavigate();
+  const [userDt, setuserDt] = useState({});
   const handleLogout = () => {
     sessionStorage.clear();
     navigate("/");
     window.location.reload();
   };
+  const username = sessionStorage.getItem("username");
+  const userId = sessionStorage.getItem("id_user");
+  useEffect(() => {
+    let isMounted = true;
+    const controller = new AbortController();
+
+    const getUser = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:8080/user/${userId}`,
+          { signal: controller.signal }
+        );
+        isMounted && setuserDt(response.data);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    getUser();
+  }, []);
 
   return (
+    <div >
+      <link
+        rel="stylesheet"
+        href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
+      />
 
-    <div>
-
-    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" />
-
-<div class="min-h-screen flex flex-row bg-white">
-  <div class="flex flex-col w-60 min-w-120 bg-white overflow-hidden">
-    <div class="flex items-center justify-center h-1/6 shadow-sm">
-    <img src="/Logo_WikuFé_4.png" alt="Logo" class="object-contain h-16 mx-auto"/>
+      <div className="min-h-screen flex flex-row bg-white">
+        <div class="flex flex-col w-60 min-w-120 bg-white overflow-hidden">
+          <div class="flex items-center justify-center h-1/6 shadow-sm">
+            <img
+              src="/Logo_WikuFé_4.png"
+              alt="Logo"
+              class="object-contain h-16 mx-auto"
+            />
+          </div>
+          <ul class="flex flex-col py-4 mx-5" style={{ fontFamily: "Outfit" }}>
+            <li>
+              <a
+                href="/"
+                class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800"
+              >
+                <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400">
+                  <Icon icon="mdi:user-group-outline" />
+                </span>
+                <span class="text-md font-medium">Data User</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="menu"
+                class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800"
+              >
+                <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400">
+                  <Icon icon="ic:sharp-restaurant-menu" />
+                </span>
+                <span class="text-md font-medium">Data Menu</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="meja"
+                class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800"
+              >
+                <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400">
+                  <Icon icon="material-symbols:table-rows" />
+                </span>
+                <span class="text-md font-medium">Data Meja</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                onClick={handleLogout}
+                class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800"
+              >
+                <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400">
+                  <Icon icon="material-symbols:logout-rounded" />
+                </span>
+                <span class="text-md font-medium">Logout</span>
+              </a>
+            </li>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+          
+            
+            {" "}
+            <li>
+              <div class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
+                <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400">
+                  <Icon icon="mdi:user" />
+                </span>
+                {userDt && (
+                  <>
+                    <div className="flex flex-col justify-start">
+                      <span class="text-md font-medium">
+                        {userDt?.data?.nama_user}
+                      </span>
+                      <span class="text-md font-medium capitalize">
+                        {userDt?.data?.role}
+                      </span>
+                    </div>
+                  </>
+                )}
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
-    <ul class="flex flex-col py-4 mx-5">
-      <li>
-        <a href="/" class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
-          <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><Icon icon="mdi:user-group-outline" /></span>
-          <span class="text-md font-medium">Data User</span>
-        </a>
-      </li>
-      <li>
-        <a href="menu" class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
-          <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><Icon icon="ic:sharp-restaurant-menu" /></span>
-          <span class="text-md font-medium">Data Menu</span>
-        </a>
-      </li>
-      <li>
-        <a href="meja" class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
-          <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><Icon icon="material-symbols:table-rows" /></span>
-          <span class="text-md font-medium">Data Meja</span>
-        </a>
-      </li>
-      <li>
-        <a href="#" onClick={handleLogout} class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
-          <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><Icon icon="material-symbols:logout-rounded" /></span>
-          <span class="text-md font-medium">Logout</span>
-        </a>
-      </li>
-    </ul>
-  </div>
-</div>
-</div>
 
-// asli 
+    // asli
     // <div>
 
     //     <button data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar" aria-controls="default-sidebar" type="button" className="inline-flex items-center p-2 mt-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">

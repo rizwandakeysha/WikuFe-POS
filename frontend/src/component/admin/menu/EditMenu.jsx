@@ -87,8 +87,8 @@ export default function EditMenu() {
   return (
     <div>
       <div className="my-16 mx-16">
-        <div class="flex items-center justify-center">
-          <h1 class="text-center text-4xl font-bold">Tabel Menu</h1>
+        <div className="flex items-center justify-center">
+          <h1 className="text-center text-4xl font-bold">Tabel Menu</h1>
         </div>
         <br />
         <br />
@@ -121,7 +121,7 @@ export default function EditMenu() {
                   Harga
                 </label>
                 <input
-                  value={prevData.harga.toLocaleString('id-ID') || ""}
+                  value={prevData.harga || ""}
                   required
                   type="text"
                   onKeyPress={(event) => {

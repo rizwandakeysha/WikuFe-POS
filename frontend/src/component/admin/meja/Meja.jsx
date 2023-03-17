@@ -121,7 +121,7 @@ export default function Meja() {
     <div>
       <div className="my-16 mx-16">
       <div class="flex items-center justify-center">
-          <h1 class="text-center text-4xl font-bold">Tabel Menu</h1>
+          <h1 class="text-center text-4xl font-bold" style={{ fontFamily: "Outfit" }}>Tabel Meja</h1>
         </div>
         <br />
         <br />
@@ -182,7 +182,7 @@ export default function Meja() {
         <br />
         <div>
             <div className="flex items-center justify-center">
-              <a href="add_meja">
+              <a href="#" onClick={setShowModalAdd}>
                 <button
                   type="button"
                   className="mb-1 text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-md w-full sm:w-auto px-5 py-2.5 text-center bg-green-600 hover:bg-green-700 focus:ring-green-800"

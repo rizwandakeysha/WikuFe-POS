@@ -49,8 +49,8 @@ export default function Sidebar() {
               class="object-contain h-16 mx-auto"
             />
           </div>
-          <ul class="flex flex-col py-4 mx-5">
-            <li>
+          <ul class="flex flex-col py-4 mx-5" style={{ fontFamily: "Outfit" }}>
+            {/* <li>
               <a
                 href="/"
                 class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800"
@@ -60,7 +60,7 @@ export default function Sidebar() {
                 </span>
                 <span class="text-md font-medium">Grafik Penjualan</span>
               </a>
-            </li>
+            </li> */}
             <li>
               <a
                 href="data_transaksi_t"
@@ -106,7 +106,7 @@ export default function Sidebar() {
                 <span class="text-md font-medium">Logout</span>
               </a>
             </li>
-            <br /><br />
+            <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
             <li>
               <div
                 class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800"

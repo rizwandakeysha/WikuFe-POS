@@ -44,11 +44,16 @@ export default function Menu() {
     <div>
       <div className="my-16 mx-16">
         <div class="flex items-center justify-center">
-          <h1 class="text-center text-4xl font-bold">Tabel User</h1>
+          <h1
+            class="text-center text-4xl font-bold"
+            style={{ fontFamily: "Outfit" }}
+          >
+            Tabel User
+          </h1>
         </div>
-<br />
-<br />
-        
+        <br />
+        <br />
+
         <div className="flex flex-wrap gap-5 ">
           <div className="w-full relative overflow-x-auto shadow-md sm:rounded-lg">
             <table className="w-full text-sm text-left text-gray-500">
@@ -103,16 +108,16 @@ export default function Menu() {
         </div>
         <br />
         <div>
-            <div className="flex items-center justify-center">
+          <div className="flex items-center justify-center">
             <a href="add_user">
-                <button
+              <button
                 type="button"
                 className="mb-1 text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-md w-full sm:w-auto px-5 py-2.5 text-center bg-green-600 hover:bg-green-700 focus:ring-green-800"
-                >
+              >
                 Tambahkan User
-                </button>
+              </button>
             </a>
-            </div>
+          </div>
         </div>
       </div>
 
